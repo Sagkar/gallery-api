@@ -54,7 +54,7 @@ func ListPhotos(c *gin.Context) {
 		"name, " +
 		"created_at, " +
 		"updated_at, " +
-		"preview, " +
+		"preview_url, " +
 		"image_url " +
 		"FROM photos WHERE deleted_at IS NULL").Rows()
 	if err != nil {
@@ -70,7 +70,7 @@ func ListPhotos(c *gin.Context) {
 			&photo.Name,
 			&photo.CreatedAt,
 			&photo.UpdatedAt,
-			&photo.Preview,
+			&photo.PreviewURL,
 			&photo.ImageURL); err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
